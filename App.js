@@ -1,22 +1,28 @@
 import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import Login from './Login';
+import Home from './Home';
 import Menu from './Menu';
+import Setting from './Setting';
+import About from './About';
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.container}>
         <AppHeader />
-          <Stack.Navigator initialRouteName='Login' screenOptions={{headerStyle: {backgroundColor: 'lightyellow'}}}>
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Menu" component={Menu} />
-          </Stack.Navigator>
+          <Drawer.Navigator>
+            <Drawer.Screen name="Login" component={Login} />
+            <Drawer.Screen name="Home" component={Home} />
+            <Drawer.Screen name="Menu" component={Menu} />
+            <Drawer.Screen name="Setting" component={Setting} />
+            <Drawer.Screen name="About" component={About} />
+          </Drawer.Navigator>
         <AppFooter />
       </View>
     </NavigationContainer>
